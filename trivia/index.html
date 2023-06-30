@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+                var buttons =  document.querySelectorAll('.mybutton');
+
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function(){
+                        if (this.innerHTML === "my_list = {}")
+                        {
+                            this.style.backgroundColor = 'green';
+                            document.querySelector('.feedback').innerHTML = "Correct Answer";
+                        }
+                        else
+                        {
+                            this.style.backgroundColor = 'red';
+                            document.querySelector('.feedback').innerHTML = "Wrong Answer";
+                        }
+                    });
+                })
+
+                document.querySelector('.button1').addEventListener('click', function() {
+                    var answer = document.querySelector('#answer');
+                    if (answer.value.toLowerCase() === 'javascript')
+                    {
+                        answer.style.backgroundColor = 'green';
+                        document.querySelector('.feedback1').innerHTML = "Correct Answer";
+                    }
+                    else
+                    {
+                        answer.style.backgroundColor = 'red';
+                        document.querySelector('.feedback1').innerHTML = "Wrong Answer";
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which of the following is not a valid way of creating an empty list in Python?</h3>
+                <div class="buttons">
+                    <button type="button" class="mybutton">my_list = []</button>
+                    <button type="button" class="mybutton">my_list = list()</button>
+                    <button type="button" class="mybutton">my_list = {}</button>
+                    <button type="button" class="mybutton">my_list = list([])</button>
+                </div>
+                <p class="feedback"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the most Popular programming Language?</h3>
+                <input type="submit" id="answer"></input>
+                <button type="button" class="button1">Check Answer</button>
+                <p class="feedback1"></p>
+            </div>
+        </div>
+    </body>
+</html>
